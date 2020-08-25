@@ -1,0 +1,14 @@
+    <!-- Search field -->
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput type="text" name="searchInput" #searchInput [(ngModel)]="searchValue">
+      <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear"
+        (click)="onClearSearchInput()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <!-- Cards List -->
+    <cards-list *ngIf="peopleData && peopleData.results && peopleData.results.length > 0" [data]="peopleData"
+      (paginatorActionURL)="getUrlParams($event)">
+    </cards-list>

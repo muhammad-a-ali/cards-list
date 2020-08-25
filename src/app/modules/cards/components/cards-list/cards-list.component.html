@@ -1,0 +1,25 @@
+<!-- Cards List -->
+<div cdkDropList class="cards-list" (cdkDropListDropped)="drop($event)">
+  <mat-card *ngFor="let card of data.results" class="card-box" cdkDrag>
+    <mat-card-header>
+      <div mat-card-avatar class="header-image" [ngStyle]="{backgroundImage:getImageURL(card.gender)}">
+      </div>
+      <mat-card-title>{{card.name}}</mat-card-title>
+      <mat-card-subtitle>{{card.gender}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <span>
+        <span class="height">Height: </span>
+        {{card.height}}
+      </span>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button matTooltip="{{card.url}}" (click)="goToLink(card.url)">URL</button>
+      <button mat-button matTooltip="{{card.homeworld}}" (click)="goToLink(card.homeworld)">Homeworld</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!-- Paginator -->
+<mat-paginator *ngIf="data.next || data.previous" #paginator [length]="data.count" [pageSize]="data.results.length"
+  (page)="pageEvent($event)"></mat-paginator>
