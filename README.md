@@ -1,0 +1,2 @@
+# cards-list
+Using Angular 9, A responsive single page web application which would take a string in a form input and search for people using this string input in this public API https://swapi.co.  All retrieved results rendered as cards and each card have the character’s details (Name, Gender, URL, height, homeworld).  Once rendered the user should be able to drag and drop the cards to reorder them on screen.  The code is documented and has an isolated unit tests.
