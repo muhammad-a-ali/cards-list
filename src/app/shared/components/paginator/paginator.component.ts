@@ -32,7 +32,7 @@ export class PaginatorComponent implements OnInit {
     if (change['data'] && !this.data.previous && this.paginator)
       this.paginator.firstPage();
   }
-  p
+
   /**
    * Sets paginator action URL `next url` or `previous url` value.
    * @param event Event emitted when the paginator changes the page index.
