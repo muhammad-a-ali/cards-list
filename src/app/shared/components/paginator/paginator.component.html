@@ -1,4 +1,4 @@
 <mat-paginator *ngIf="isShown && (data.next || data.previous)"
-  [ngClass]="{'arabic-paginator':translationService.isArabic}" [length]="data.count" [pageSize]="data.results.length"
-  (page)="pageEvent($event)">
+  [ngClass]="{'arabic-paginator':translationService.isArabic}" [length]="data.count" [pageIndex]="pageIndex"
+  [pageSize]="data.results.length" (page)="pageEvent($event)">
 </mat-paginator>

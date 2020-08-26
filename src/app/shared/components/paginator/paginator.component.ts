@@ -13,6 +13,7 @@ import { PaginatorService } from '../../services/paginator.service';
 export class PaginatorComponent implements OnInit {
   alive: boolean = true;
   isShown: boolean = true;
+  pageIndex: number = 0;
   @Input() data: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -31,7 +32,7 @@ export class PaginatorComponent implements OnInit {
     if (change['data'] && !this.data.previous && this.paginator)
       this.paginator.firstPage();
   }
-
+  p
   /**
    * Sets paginator action URL `next url` or `previous url` value.
    * @param event Event emitted when the paginator changes the page index.
@@ -41,12 +42,18 @@ export class PaginatorComponent implements OnInit {
     else this.paginatorService.paginatorActionURL.next(this.data.previous);
   }
 
-  /** Reinitialize Paginato On cahnge language. */
+  /** Reinitialize Paginato On change language. */
   private onLangChange(): void {
     this.translate.onLangChange.pipe(takeWhile(() => this.alive))
       .subscribe(() => {
+        this.updatePageIndex();
         this.reinitPaginator();
       });
+  }
+
+  /** Update pageIndex value from pageIndex of paginator. */
+  private updatePageIndex(): void {
+    this.pageIndex = this.paginator.pageIndex;
   }
 
   /** Reinitialize Paginator to update labels values. */
