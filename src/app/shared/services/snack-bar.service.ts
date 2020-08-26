@@ -18,8 +18,8 @@ export class SnackBarService {
   openSnackBar(message: string, action: string, config?: MatSnackBarConfig<any>): void {
     if (!config) config = {
       duration: 3000,
-      horizontalPosition: 'right',
-      verticalPosition: 'top'
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
     }
     this.snackBar.open(message, action, config);
   }

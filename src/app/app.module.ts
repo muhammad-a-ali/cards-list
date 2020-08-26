@@ -9,16 +9,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/modules/shared.module';
 
 import { HttpInterceptorService } from './core/services/http-interceptor.service';
+import { RootTranslationModule } from './shared/modules/translation/root-translation.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    RootTranslationModule,
     SharedModule
   ],
   providers: [{

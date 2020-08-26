@@ -6,34 +6,29 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { LangPaginatorService } from '../services/lang-paginator.service';
+
+const modules: any[] = [
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatSnackBarModule,
+  MatIconModule,
+  MatCardModule,
+  MatTooltipModule,
+  DragDropModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSelectModule
+];
 
 @NgModule({
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatIconModule,
-    MatCardModule,
-    MatTooltipModule,
-    DragDropModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule
-  ],
-  exports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatIconModule,
-    MatCardModule,
-    MatTooltipModule,
-    DragDropModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule
-  ]
+  imports: [...modules],
+  exports: [...modules],
+  providers: [{ provide: MatPaginatorIntl, useClass: LangPaginatorService }]
 })
 export class MaterialAngularModule { }

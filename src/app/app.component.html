@@ -1,2 +1,5 @@
 <spinner></spinner>
-<router-outlet></router-outlet>
+
+<div class="app-container" [ngClass]="{'rtl':translationService.isArabic}">
+  <router-outlet></router-outlet>
+</div>

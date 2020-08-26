@@ -1,0 +1,9 @@
+::ng-deep mat-paginator .mat-paginator-container {
+  direction: ltr;
+}
+
+.arabic-paginator {
+  ::ng-deep .mat-paginator-range-label {
+    direction: rtl;
+  }
+}

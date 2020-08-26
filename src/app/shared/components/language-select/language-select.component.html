@@ -1,0 +1,10 @@
+<mat-form-field appearance="fill" [style.text-align]="translationService.isArabic?'right':'left'">
+  <mat-label>{{'main.languages' | translate}}</mat-label>
+  <mat-select [(value)]="translationService.selectedLang"
+    (selectionChange)="translationService.switchLanguage($event.value)">
+    <mat-option *ngFor="let language of languages" [value]="language.value"
+      [style.text-align]="translationService.isArabic?'right':'left'">
+      {{language.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

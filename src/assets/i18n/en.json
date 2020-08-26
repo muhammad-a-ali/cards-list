@@ -1,0 +1,29 @@
+{
+  "main": {
+    "languages": "Languages",
+    "search": "Search"
+  },
+  "card": {
+    "male": "Male",
+    "female": "Female",
+    "n/a": "N/A",
+    "height": "Height: ",
+    "url": "URL",
+    "homeworld": "Homeworld"
+  },
+  "paginator": {
+    "of": "of",
+    "items_per_page": "Items per page",
+    "next_page": "Next page",
+    "previous_page": "Previous page"
+  },
+  "snack_bar": {
+    "people": "People",
+    "no_data": "No data",
+    "error": "Error"
+  },
+  "page_not_found": {
+    "the_page_you_requested_was_not_found": "The page you requested was not found",
+    "go_back_to_the_previous_page": "Go back to the previous page"
+  }
+}

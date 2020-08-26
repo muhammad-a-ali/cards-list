@@ -3,6 +3,9 @@ import { ApiRequestService } from 'src/app/core/services/api-request.service';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { takeWhile, debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { fromEvent } from 'rxjs';
+import { TranslationService } from 'src/app/shared/services/translation.service';
+import { TranslateService } from '@ngx-translate/core';
+import { PaginatorService } from 'src/app/shared/services/paginator.service';
 
 @Component({
   selector: 'app-cards',
@@ -16,11 +19,17 @@ export class CardsComponent implements OnInit, AfterViewInit, OnDestroy {
   peopleData: any;
   peopleList: any[] = [];
 
-  constructor(private apiRequestService: ApiRequestService, private snackBarService: SnackBarService) { }
+  constructor(
+    public translationService: TranslationService,
+    private translate: TranslateService,
+    private paginatorService: PaginatorService,
+    private apiRequestService: ApiRequestService,
+    private snackBarService: SnackBarService
+  ) { }
 
   ngOnInit(): void {
-    // Get all people list
     this.getPeopleList('');
+    this.getPaginatorActionURL();
   }
 
   ngAfterViewInit(): void {
@@ -33,11 +42,19 @@ export class CardsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.getPeopleList('');
   }
 
+  /** On page event get paginator action URL `next url` or `previous url` value. 
+   *  Calling getUrlParams fn with url value.
+   */
+  private getPaginatorActionURL() {
+    this.paginatorService.paginatorActionURL.pipe(takeWhile(() => this.alive))
+      .subscribe((url: string) => this.getUrlParams(url));
+  }
+
   /**
    * Gets search and page params, then gets the people list that matching with these params.
    * @param url The paginator action URL `next url` or `previous url`.
    */
-  getUrlParams(url: string): void {
+  private getUrlParams(url: string): void {
     if (!url) return;
     const params: string[] = url.split('?')[1].split('&');
     const search: string = params[0].split('=')[1];
@@ -76,7 +93,7 @@ export class CardsComponent implements OnInit, AfterViewInit, OnDestroy {
         this.setPeopleData(response);
         if (response) this.checkDataAvailability(response.results);
       }, error => {
-        this.snackBarService.openSnackBar(error, 'Error');
+        this.snackBarService.openSnackBar(error, this.translate.instant('snack_bar.error'));
       })
   }
 
@@ -94,11 +111,12 @@ export class CardsComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   private checkDataAvailability(peopleList: any[]): void {
     if (peopleList && peopleList.length === 0)
-      this.snackBarService.openSnackBar('No data', 'People');
+      this.snackBarService.openSnackBar(this.translate.instant('snack_bar.no_data'), this.translate.instant('snack_bar.people'));
   }
 
   /** Sets a false value to alive to stop any subscribe when component is destroyed. */
   ngOnDestroy(): void {
     this.alive = false;
   }
+
 }

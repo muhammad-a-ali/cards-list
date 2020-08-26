@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { PageEvent, MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'cards-list',
@@ -9,18 +8,10 @@ import { PageEvent, MatPaginator } from '@angular/material/paginator';
 })
 export class CardsListComponent implements OnInit {
   @Input() data: any;
-  @Output() paginatorActionURL: EventEmitter<string> = new EventEmitter();
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(change: SimpleChange) {
-    // Get first page in paginator if data has no previous.
-    if (change['data'] && !this.data.previous && this.paginator)
-      this.paginator.firstPage();
   }
 
   /**
@@ -50,12 +41,4 @@ export class CardsListComponent implements OnInit {
     moveItemInArray(this.data.results, event.previousIndex, event.currentIndex);
   }
 
-  /**
-   * Sets paginator action URL `next url` or `previous url` value.
-   * @param event Event emitted when the paginator changes the page index.
-   */
-  pageEvent(event: PageEvent): void {
-    if (event.pageIndex > event.previousPageIndex) this.paginatorActionURL.next(this.data.next);
-    else this.paginatorActionURL.next(this.data.previous);
-  }
 }

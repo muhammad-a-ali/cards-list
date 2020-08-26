@@ -1,0 +1,29 @@
+{
+  "main": {
+    "languages": "اللغات",
+    "search": "بحث"
+  },
+  "card": {
+    "male": "ذكر",
+    "female": "أنثى",
+    "n/a": "غير معروف",
+    "height": "الطول: ",
+    "url": "الرابط",
+    "homeworld": "الموطن"
+  },
+  "paginator": {
+    "of": "من",
+    "items_per_page": "عناصر لكل صفحة",
+    "next_page": "الصفحة التالية",
+    "previous_page": "الصفحة السابقة"
+  },
+  "snack_bar": {
+    "people": "اشخاص",
+    "no_data": "لا توجد بيانات",
+    "error": "خطأ"
+  },
+  "page_not_found": {
+    "the_page_you_requested_was_not_found": "الصفحة التي تطلبها غير موجودة",
+    "go_back_to_the_previous_page": "عودة الى الصفحة السابقة"
+  }
+}

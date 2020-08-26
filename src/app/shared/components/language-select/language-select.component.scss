@@ -1,0 +1,21 @@
+::ng-deep language-select .mat-form-field {
+  line-height: unset;
+}
+
+::ng-deep language-select .mat-select-arrow-wrapper {
+  vertical-align: top;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+  :host {
+    margin-bottom: -5px;
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  :host {
+    margin-bottom: -10px;
+  }
+}
